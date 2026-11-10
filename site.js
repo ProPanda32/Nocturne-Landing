@@ -19,7 +19,7 @@ reducedQuery.addEventListener('change',()=>{reduced=reducedQuery.matches})
 
 // Optional quiet, generated ambience starts only after the visitor presses play.
 let audio, gain
-const music=app.querySelector('.music-toggle')!
+const music=app.querySelector('.music-toggle')
 music.addEventListener('click',async()=>{
   try {
     if(!audio){audio=new AudioContext();gain=audio.createGain();gain.gain.value=0;gain.connect(audio.destination)
@@ -31,4 +31,7 @@ music.addEventListener('click',async()=>{
 })
 
 
-window.addEventListener("scroll",()=>document.querySelector(".site-header").classList.toggle("is-scrolled",scrollY>30),{passive:true});
+const header=app.querySelector(".site-header")
+const updateHeader=()=>header.classList.toggle("is-scrolled",scrollY>30)
+updateHeader()
+window.addEventListener("scroll",updateHeader,{passive:true});
