@@ -25,7 +25,7 @@ music.addEventListener('click',async()=>{
     if(!audio){audio=new AudioContext();gain=audio.createGain();gain.gain.value=0;gain.connect(audio.destination)
       for(const frequency of [110,164.81,220.12]){const oscillator=audio.createOscillator();oscillator.type='sine';oscillator.frequency.value=frequency;oscillator.connect(gain);oscillator.start()}}
     const playing=music.getAttribute('aria-pressed')!=='true'
-    await audio.resume();gain .gain.setTargetAtTime(playing?.012:0,audio.currentTime,.6)
+    await audio.resume();gain.gain.setTargetAtTime(playing ? 0.012 : 0,audio.currentTime,.6)
     music.setAttribute('aria-pressed',String(playing));music.setAttribute('aria-label',playing?'Mute ambient sound':'Play ambient sound')
   } catch {music.setAttribute('aria-label','Ambient sound unavailable')}
 })
